@@ -8,10 +8,9 @@ Esta pasta documenta como a Equipe 1 aplicou o **Scrum** para organizar o trabal
 docs/scrum/
 ├── README.md            - papéis, eventos, artefatos e acordos do time
 ├── product-backlog.md   - backlog do produto priorizado (AC)
-└── sprints/
-    ├── sprint-01.md     - 12/10 a 18/10 - Kick-off e criação do repositório
-    ├── sprint-02.md     - 19/10 a 25/10 - Implementação do site
-    └── sprint-03.md     - 25/10 - Fechamento, testes, documentação e publicação
+├── sprint-01.md         - 12/10 a 18/10 - Kick-off e criação do repositório
+├── sprint-02.md         - 19/10 a 25/10 - Implementação do site
+└── sprint-03.md         - 25/10 - Fechamento, testes, documentação e publicação
 ```
 
 ---
@@ -47,7 +46,7 @@ As reuniões acontecem no **Discord** (com compartilhamento de tela). Fora das r
 | Artefato | Onde está |
 |---|---|
 | **Product Backlog** | [`product-backlog.md`](product-backlog.md) |
-| **Sprint Backlog** | Seção "Sprint Backlog" de cada arquivo em [`sprints/`](sprints/) |
+| **Sprint Backlog** | Seção "Sprint Backlog" de cada arquivo `sprint-0X.md` desta pasta |
 | **Incremento** | O próprio site versionado no repositório (`index.html`, `pages/`, `css/`, `js/` e `assets/`) |
 
 ### Meta do Produto (Product Goal)
@@ -84,19 +83,17 @@ As reuniões acontecem no **Discord** (com compartilhamento de tela). Fora das r
 
 ## 5. Contribuição por pessoa (AC)
 
-Commits de 14/10 a 25/10/2026 (31 no total), com os nomes de autor unificados (o repositório tem 11 identidades de autor para 7 pessoas).
+Commits de 14/10 a 25/10/2026 (34 no total)
 
 | Pessoa | Commits | Foco principal |
 |---|---|---|
+| João Pedro Ferreira | 11 | README (estrutura e observações técnicas), `base.css`, favicon, `.gitignore`, limpeza de placeholders , Documentação (Scrum e Agendamento) , Protótipo Atualizado Figma |
 | Enzo Trotto | 10 | Repositório inicial, README, `main.js` (menu hambúrguer, janela de contato, WhatsApp, voltar ao topo), `extras.css` e `cta.css` (SM) |
-| João Pedro Ferreira | 9 | README (estrutura e observações técnicas), `base.css`, favicon, `.gitignore`, limpeza de placeholders , Documentação (Scrum e Agendamento) , Protótipo Atualizado Figma |
 | Bernardo Nemirovsky | 5 | Estrutura de pastas, `pkz.html` + `pkz.css`, páginas de aula experimental, versões `-480/-800/-1280` das fotos ("corrigindo fotos") |
 | Alexia Schmid | 5 | `one-to-one.html`, `one-to-one.css`, imagens da One to One e correção da pasta de imagens |
 | Bernardo Gomes | 1 | `agendamento.js` e `data.js` (lógica base do agendamento) |
 | Gabriel Góis | 1 | `index.html` (portal), `portal.js` e imagens do portal |
 | Guilherme Macedo | 1 | `portal.css`, `legal.css`, `404.html` e `privacidade.html` |
-
-> Número de commits não mede contribuição: vários commits aqui são de arquivo vazio seguido do commit com o conteúdo, e um único commit pode trazer centenas de linhas (ex.: `portal.css` tem 872).
 
 ---
 
@@ -104,6 +101,6 @@ Commits de 14/10 a 25/10/2026 (31 no total), com os nomes de autor unificados (o
 
 | Sprint | Período | Objetivo | Status |
 |---|---|---|---|
-| [Sprint 1](sprints/sprint-01.md) | 12/10 - 18/10 | Criar o repositório e os arquivos iniciais | Concluída |
-| [Sprint 2](sprints/sprint-02.md) | 19/10 - 25/10 | Implementar o portal, as páginas das duas marcas, o CSS e o agendamento | Concluída (com pendências) |
-| [Sprint 3](sprints/sprint-03.md) | 25/10 (apresentação na terça, 27/10) | Testes do agendamento, responsividade, documentação e fechamento do site | Concluída (com pendências: WhatsApp real, 404, GitHub Pages) |
+| [Sprint 1](sprint-01.md) | 12/10 - 18/10 | Criar o repositório e os arquivos iniciais | Concluída |
+| [Sprint 2](sprint-02.md) | 19/10 - 25/10 | Implementar o portal, as páginas das duas marcas, o CSS e o agendamento | Concluída (com pendências) |
+| [Sprint 3](sprint-03.md) | 25/10 (apresentação na terça, 27/10) | Testes do agendamento, responsividade, documentação e fechamento do site | Concluída (com pendências: WhatsApp real, 404, GitHub Pages) |

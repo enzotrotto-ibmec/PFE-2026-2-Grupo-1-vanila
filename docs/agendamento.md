@@ -200,12 +200,6 @@ Depois da integração, o fluxo completo foi testado em **25/10/2026** abrindo a
 
 **Conclusão:** o fluxo funciona nas duas marcas, no celular e no desktop.
 
-**Ainda recomendado testar a mão** (não coberto acima):
-- [ ] Em um celular real (Android e iPhone), com o WhatsApp instalado.
-- [ ] Em tablet (largura entre 641 e 1100 px).
-- [ ] Depois de trocar o número de WhatsApp de exemplo pelo real.
-- [ ] No site publicado no GitHub Pages.
-
 ---
 
 ## 9. Limitações e pontos de atenção

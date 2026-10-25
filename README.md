@@ -2,19 +2,17 @@
 
 ## PKZ Lab & One to One
 
-Repositório de organização e centralização do código e da documentação produzidos para o projeto de avaliação AC da disciplina Projeto Front-end, cujo objetivo é desenvolver o novo site da empresa PKZ Lab & One to One.
+Repositório de organização e centralização do código produzidos para o projeto de avaliação AC da disciplina Projeto Front-end, cujo objetivo é desenvolver o novo site da empresa PKZ Lab & One to One.
 
 ## Contexto
 
-A PKZ Lab & One to One contratou nossa instituição para reestruturar o site da empresa. Na etapa anterior (AP1), o foco foi o planejamento da proposta de melhoria. Nesta etapa (AC), o foco está na implementação: o trabalho consiste em desenvolver o site em si, utilizando HTML, CSS e JavaScript puro (Vanilla), sem uso de React ou qualquer outro framework/biblioteca de interface.
-
-Ou seja: este repositório reúne o código-fonte do site e a documentação de apoio (Scrum, sistema de agendamento e protótipo atualizado).
+A PKZ Lab & One to One contratou nossa instituição para reestruturar o site da empresa. Na etapa anterior (AP1), o foco foi o desenvolvimento de toda a documentação que abrange a criação do website. Nesta etapa (AC), o foco está na implementação: o trabalho consiste em desenvolver o site em si, utilizando HTML, CSS e JavaScript puro (Vanilla), sem uso de React ou qualquer outro framework/biblioteca de interface.
 
 ## Tecnologias utilizadas
 
-* HTML5: estrutura semântica das páginas
-* CSS3: estilização, responsividade e layout (Flexbox/Grid)
-* JavaScript (Vanilla): interatividade e manipulação do DOM, sem React nem outros frameworks
+* HTML5
+* CSS3
+* JavaScript (Vanilla)
 
 ## Requisitos da entrega
 
@@ -22,9 +20,9 @@ Ou seja: este repositório reúne o código-fonte do site e a documentação de 
 * Menu hambúrguer no mobile, com JavaScript adicionando e removendo uma classe CSS para abrir e fechar o menu (como no exemplo mostrado em sala), e menu completo (sem hambúrguer) no desktop
 * Imagens presentes no site e nenhum espaço de imagem vazio ou placeholder: usar o material disponibilizado pelo cliente ou imagens geradas com IA
 * Alinhamento e organização do layout: respiro (espaçamento) adequado entre os elementos, sem elementos aglutinados e sem textos colados nas bordas dos elementos pais
-* Sistema de agendamento: usa a lógica em JavaScript disponibilizada pelo professor, que pode ser editada à vontade, mas deve ser testada para garantir que as alterações não quebraram a funcionalidade (se quebrar, voltar à versão original). O CSS pode ser alterado livremente
+* Sistema de agendamento: usa a lógica em JavaScript disponibilizada pelo professor, que pode ser editada à vontade, mas deve ser testada para garantir que as alterações não quebraram a funcionalidade (se quebrar, voltar à versão original)
 * Publicação no GitHub Pages
-* Documentação do repositório referente a esta tarefa, contendo:
+* Documentação do repositório referente a esta parte do projeto, contendo:
    * o Scrum respectivo
    * a questão do agendamento (como o sistema foi incorporado ao site)
    * o protótipo atualizado, incluindo o agendamento
@@ -40,7 +38,8 @@ Ou seja: este repositório reúne o código-fonte do site e a documentação de 
 │   ├── pkz-aula-experimental.html          Agendamento da aula experimental (PKZ)
 │   ├── one-to-one.html                     Página inicial do Studio One To One
 │   ├── one-to-one-aula-experimental.html   Agendamento da aula experimental (One To One)
-│   └── privacidade.html                    Política de Privacidade (LGPD)
+│   ├── privacidade.html                    Política de Privacidade (LGPD)
+│   └── .gitignore                          Ignora arquivos de sistema/editor (Thumbs.db, .vscode/, .idea/ etc.)
 ├── css/
 │   ├── base.css                            Estrutura e componentes comuns (mobile first)
 │   ├── pkz.css                             Identidade visual da PKZ
@@ -56,13 +55,25 @@ Ou seja: este repositório reúne o código-fonte do site e a documentação de 
 │   └── portal.js                           Halter arrastável do portal e redirecionamento
 ├── assets/
 │   ├── img/
-│   │   ├── portal/                         Fundos do portal
-│   │   ├── pkz/                            Fotos da PKZ
-│   │   └── one-to-one/                     Fotos da One To One
+│   │   ├── portal/                         Fundos do portal (-480, -800 e -1280 em WebP)
+│   │   ├── pkz/                            Fotos da PKZ (-480, -800 e -1280 em WebP)
+│   │   └── one-to-one/                     Fotos da One To One (-480, -800 e -1280 em WebP)
 │   └── icons/
 │       └── favicon.svg
 ├── fotos-originais/                        Fotos em alta resolução (fontes); o site não usa
-├── docs/                                   (a criar) scrum/ · agendamento/ · prototipo/
+│   ├── PKZ/
+│   ├── OneToOne/
+│   └── landing/
+├── docs/
+│   ├── agendamento.md                      Documentação do sistema de agendamento
+│   └── scrum/                              Documentação do Scrum (ver abaixo)
+│       ├── README.md                       Papéis, eventos, artefatos, acordos e contribuição por pessoa
+│       ├── product-backlog.md              Product Backlog priorizado (MoSCoW)
+│       ├── sprint-01.md                    Sprint 1 (12/10 a 18/10)
+│       ├── sprint-02.md                    Sprint 2 (19/10 a 25/10)
+│       └── sprint-03.md                    Sprint 3 (25/10)
+├── protótipo-atualizado/
+│   └── site-vanila.md                      Link do protótipo atualizado no Figma
 └── README.md
 ```
 
@@ -79,14 +90,14 @@ Estilização com identidade visual consistente, seguindo a abordagem mobile fir
 **JavaScript**
 Funcionalidades e interações do site (menu hambúrguer controlado por adição e remoção de classe, sistema de agendamento, validações de formulário, componentes dinâmicos, etc.), implementadas em JavaScript puro, sem frameworks.
 
-**Documentação Scrum (`docs/scrum/`)**
-Registro de como a equipe aplicou o Scrum nesta tarefa: papéis (PO, Scrum Master e time), eventos, Definition of Done, Product Backlog priorizado e um arquivo por sprint com Sprint Backlog, Review e Retrospectiva.
+**Documentação Scrum ([`docs/scrum/`](docs/scrum/README.md))**
+Registro de como a equipe aplicou o Scrum nesta tarefa: papéis (PO, Scrum Master e time), eventos, Definition of Ready e Done, [Product Backlog](docs/scrum/product-backlog.md) priorizado e um arquivo por sprint ([Sprint 1](docs/scrum/sprint-01.md), [Sprint 2](docs/scrum/sprint-02.md) e [Sprint 3](docs/scrum/sprint-03.md)) com Sprint Backlog, Review e Retrospectiva.
 
-**Documentação do agendamento (`docs/agendamento/`)**
-Descrição de como o sistema de agendamento foi integrado ao site: onde ele aparece, como funciona para o usuário, quais alterações a equipe fez na lógica em JavaScript fornecida pelo professor, e como foram feitos os testes para garantir que a funcionalidade continuou funcionando.
+**Documentação do agendamento ([`docs/agendamento.md`](docs/agendamento.md))**
+Descrição de como o sistema de agendamento foi integrado ao site: onde ele aparece, como funciona para o usuário, como funciona por dentro (`data.js` e `agendamento.js`), quais alterações a equipe fez na lógica em JavaScript fornecida pelo professor, como foram feitos os testes para garantir que a funcionalidade continuou funcionando e as limitações conhecidas.
 
-**Protótipo atualizado (`docs/prototipo/`)**
-Protótipo do grupo atualizado para incluir o agendamento, com o link para a ferramenta utilizada (ex: Figma) e/ou capturas de tela.
+**Protótipo atualizado ([`protótipo-atualizado/site-vanila.md`](protótipo-atualizado/site-vanila.md))**
+Protótipo do grupo atualizado no Figma para incluir o agendamento. O arquivo da pasta guarda o link do Figma.
 
 ## Como executar
 
@@ -107,7 +118,7 @@ O site é publicado via GitHub Pages.
 * **Menu hambúrguer:** `js/main.js` adiciona e remove a classe `nav-open` na lista de links; o CSS mostra e esconde o painel (as páginas de agendamento também carregam o `main.js`).
 * **WhatsApp:** o número `5521000000000` é um valor de exemplo. Troque-o em `js/data.js` (uma vez por marca): os links `wa.me` das páginas levam o atributo `data-whatsapp` e recebem o número de lá. A única cópia escrita à mão fica no `<noscript>` de cada página `*-aula-experimental.html` (sem JavaScript não há como ler o `data.js`).
 * **404:** `404.html` usa `<base href="/PFEcodigo-prototipo/">`, o nome do repositório no GitHub Pages (que publica em `usuario.github.io/repositorio/`). Se o repositório tiver outro nome, troque essa linha; senão o 404 aparece sem estilo e com links quebrados. Nessa página não use links só de âncora (`#algo`).
-* **Imagens:** as fotos do site estão em WebP nos tamanhos `-480`, `-800` e `-1280` (usados no `srcset`). Para trocar ou adicionar uma foto, exporte nesses três tamanhos e siga o mesmo padrão das imagens existentes.
+* **Imagens:** as originais ficam em `fotos-originais/` e o site usa só as versões de `assets/img/`, em WebP nos tamanhos `-480`, `-800` e `-1280` (usados no `srcset`). Para trocar ou adicionar uma foto, exporte nesses três tamanhos e siga o mesmo padrão das imagens existentes.
 * **Política de privacidade:** é um modelo; revisar com o responsável legal antes de publicar.
 * Mexer em `css/base.css`, `css/cta.css`, `css/extras.css` ou nos scripts de `js/` afeta as duas marcas: combine antes e teste PKZ e One To One.
 
@@ -130,16 +141,16 @@ O site é publicado via GitHub Pages.
 
 ## Status dos entregáveis
 
-- [ ] Estrutura HTML das páginas
-- [ ] Estilização CSS (mobile first)
-- [ ] Responsividade (mobile, tablet e desktop)
-- [ ] Menu hambúrguer (mobile) e menu completo (desktop)
-- [ ] Imagens e remoção de placeholders vazios
-- [ ] Revisão de alinhamentos, espaçamentos e organização do layout
-- [ ] Sistema de agendamento (testado após as edições)
-- [ ] Interatividade com JavaScript
-- [ ] Documentação Scrum
-- [ ] Documentação do agendamento
-- [ ] Protótipo atualizado com o agendamento
-- [ ] Publicação no GitHub Pages
-- [ ] Revisão e testes finais
+- [x] Estrutura HTML das páginas
+- [x] Estilização CSS (mobile first)
+- [x] Responsividade (mobile, tablet e desktop)
+- [x] Menu hambúrguer (mobile) e menu completo (desktop)
+- [x] Imagens e remoção de placeholders vazios
+- [x] Revisão de alinhamentos, espaçamentos e organização do layout
+- [x] Sistema de agendamento
+- [x] Interatividade com JavaScript
+- [x] Documentação Scrum
+- [x] Documentação do agendamento
+- [x] Protótipo atualizado com o agendamento
+- [x] Publicação no GitHub Pages
+- [x] Revisão e testes finais
