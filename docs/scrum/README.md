@@ -89,7 +89,7 @@ Commits de 14/10 a 25/10/2026 (31 no total), com os nomes de autor unificados (o
 | Pessoa | Commits | Foco principal |
 |---|---|---|
 | Enzo Trotto | 10 | Repositório inicial, README, `main.js` (menu hambúrguer, janela de contato, WhatsApp, voltar ao topo), `extras.css` e `cta.css` (SM) |
-| João Pedro Ferreira | 9 | README (estrutura e observações técnicas), `base.css`, favicon, `.gitignore`, limpeza de placeholders | Documentação (Scrum e Agendamento) | Protótipo Atualizado Figma
+| João Pedro Ferreira | 9 | README (estrutura e observações técnicas), `base.css`, favicon, `.gitignore`, limpeza de placeholders , Documentação (Scrum e Agendamento) , Protótipo Atualizado Figma |
 | Bernardo Nemirovsky | 5 | Estrutura de pastas, `pkz.html` + `pkz.css`, páginas de aula experimental, versões `-480/-800/-1280` das fotos ("corrigindo fotos") |
 | Alexia Schmid | 5 | `one-to-one.html`, `one-to-one.css`, imagens da One to One e correção da pasta de imagens |
 | Bernardo Gomes | 1 | `agendamento.js` e `data.js` (lógica base do agendamento) |
