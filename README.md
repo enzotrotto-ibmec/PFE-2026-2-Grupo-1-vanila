@@ -118,8 +118,8 @@ O site é publicado via GitHub Pages.
 * Bernardo Nemirovsky
 * Enzo Trotto
 * Gabriel Góis
-- Guilherme Macedo
-- João Pedro Ferreira
+* Guilherme Macedo
+* João Pedro Ferreira
 
 ## Disciplina
 
