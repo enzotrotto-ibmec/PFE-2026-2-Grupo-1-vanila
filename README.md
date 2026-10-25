@@ -118,3 +118,28 @@ O site é publicado via GitHub Pages.
 * Bernardo Nemirovsky
 * Enzo Trotto
 * Gabriel Góis
+- Guilherme Macedo
+- João Pedro Ferreira
+
+## Disciplina
+
+- **Curso/Disciplina:** Projeto Front-end (turma de terça-feira)
+- **Professor:** Thiago Marcondes Santos
+- **Instituição:** IBMEC
+- **Semestre:** 2026.2
+
+## Status dos entregáveis
+
+- [ ] Estrutura HTML das páginas
+- [ ] Estilização CSS (mobile first)
+- [ ] Responsividade (mobile, tablet e desktop)
+- [ ] Menu hambúrguer (mobile) e menu completo (desktop)
+- [ ] Imagens e remoção de placeholders vazios
+- [ ] Revisão de alinhamentos, espaçamentos e organização do layout
+- [ ] Sistema de agendamento (testado após as edições)
+- [ ] Interatividade com JavaScript
+- [ ] Documentação Scrum
+- [ ] Documentação do agendamento
+- [ ] Protótipo atualizado com o agendamento
+- [ ] Publicação no GitHub Pages
+- [ ] Revisão e testes finais
