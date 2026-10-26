@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="../css/pkz.css" />
     <link rel="stylesheet" href="../css/cta.css" />
     <link rel="stylesheet" href="../css/extras.css" />
+    <!-- Sem JS a prévia do mapa não funcionaria: some e fica só o iframe do <noscript> -->
+    <noscript><style>.map-facade { display: none; }</style></noscript>
   </head>
   <body>
     <a class="skip-link" href="#main">Pular para o conteúdo</a>
@@ -66,8 +68,7 @@
 
         <div class="nav-center">
           <a href="#home" class="brand-logo-link" aria-label="PKZ Lab — página inicial">
-            <span class="brand-text desktop-logo">PKZ LAB</span>
-            <span class="brand-text mobile-logo">PKZ LAB</span>
+            <img class="brand-logo" src="../assets/img/logos/pkz-lab-horizontal-branco.svg" alt="" width="849" height="255" />
           </a>
         </div>
 
@@ -370,6 +371,7 @@
 
       <section id="faq" class="faq" aria-labelledby="faq-title">
         <h2 id="faq-title">Perguntas frequentes</h2>
+        <img class="faq-logo" src="../assets/img/logos/pkz-lab-empilhado-branco.svg" alt="" width="390" height="521" loading="lazy" />
         <div class="faq-list">
           <details class="faq-item">
             <summary>Como agendo a aula experimental?</summary>
@@ -440,6 +442,21 @@
           >
         </p>
         <div class="map-wrapper">
+          <!-- O Google Maps (~1 MB) só carrega quando a pessoa pede: js/main.js troca este botão pelo iframe -->
+          <button
+            type="button"
+            class="map-facade"
+            data-map-src="https://www.google.com/maps?q=Av.+Armando+Lombardi,+949,+Barra+da+Tijuca,+Rio+de+Janeiro&amp;output=embed"
+            data-map-title="Localização PKZ"
+          >
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span class="map-facade-label">Ver mapa</span>
+            <span class="map-facade-hint">Carrega o mapa do Google nesta página</span>
+          </button>
+          <noscript>
           <iframe
             title="Localização PKZ"
             tabindex="-1"
@@ -450,6 +467,7 @@
             allowfullscreen=""
             loading="lazy"
           ></iframe>
+          </noscript>
         </div>
         <div class="location-actions">
           <a
@@ -484,7 +502,7 @@
     <footer class="site-footer-page">
       <div class="footer-inner">
         <div class="footer-brand">
-          <span class="footer-logo">PKZ LAB</span>
+          <img class="footer-logo" src="../assets/img/logos/pkz-lab-horizontal-branco.svg" alt="PKZ Lab" width="849" height="255" loading="lazy" />
           <p>
             Alto rendimento esportivo para todas as idades e todos os
             esportes.

@@ -74,7 +74,6 @@
   --nav-transition:
     color 0.2s,
     background-color 0.2s;
-  --logo-size-mobile: clamp(1.3rem, 6vw, 1.6rem); /* logotipo curto no header mobile */
 
   /* ---------- Sombras ---------- */
   --shadow-hero: 0 16px 36px rgba(1, 76, 111, 0.1); /* foto do hero */
@@ -84,23 +83,6 @@
 
   /* ---------- Overlays ---------- */
   --overlay: rgba(1, 76, 111, 0.45); /* ::backdrop do modal <dialog> */
-}
-
-/* ---------- Logotipo (tipográfico, cor sólida) ---------- */
-.brand-text {
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: clamp(1.6rem, 3.5vw, 2.1rem);
-  color: var(--accent);
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  transition:
-    color 0.2s ease,
-    transform 0.2s ease;
-}
-.brand-logo-link:hover .brand-text {
-  opacity: 0.8;
-  transform: scale(1.03);
 }
 
 /* ---------- Hero ---------- */
@@ -139,6 +121,7 @@
 }
 .btn-modal:hover {
   background-color: var(--btn-hover-bg);
+  color: var(--btn-hover-fg); /* texto branco no ciano ficava com contraste 2,2:1; preto passa de 9:1 */
 }
 
 /* ---------- Serviços ---------- */
@@ -210,16 +193,12 @@
   color: var(--accent);
 }
 
-/* ---------- Rodapé: logotipo ---------- */
+/* ---------- Logotipo: maior que o padrão de base.css para o "STUDIO" do logo ficar legível ---------- */
+.brand-logo {
+  height: 2.75rem;
+}
 .footer-logo {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 800;
-  font-size: 1.15rem;
-  letter-spacing: 0.5px;
-  text-transform: uppercase;
-  color: var(--accent);
-  margin-bottom: 0.5rem;
+  height: 3.25rem;
 }
 
 /* ---------- Responsivo (marca), mobile first: o CSS acima é o celular ---------- */
@@ -249,8 +228,16 @@
 
 /* ---------- Desktop largo (>= 1101px): hierarquia e composição ---------- */
 @media (min-width: 68.8125em) {
-  .brand-text {
-    font-size: var(--fs-logo);
+  .brand-logo {
+    height: 3.5rem;
+  }
+  .footer-logo {
+    height: 3.75rem;
+  }
+  /* logo horizontal: mais largura para ficar à altura do título.
+     Seletor com .faq para vencer o .faq-logo de extras.css, que carrega depois deste arquivo. */
+  .faq .faq-logo {
+    width: min(100%, 22rem);
   }
   .hero-content h1 {
     font-size: var(--fs-hero);

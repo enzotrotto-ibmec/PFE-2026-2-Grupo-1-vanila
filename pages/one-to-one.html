@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="../css/one-to-one.css" />
     <link rel="stylesheet" href="../css/cta.css" />
     <link rel="stylesheet" href="../css/extras.css" />
+    <!-- Sem JS a prévia do mapa não funcionaria: some e fica só o iframe do <noscript> -->
+    <noscript><style>.map-facade { display: none; }</style></noscript>
   </head>
   <body>
     <a class="skip-link" href="#main">Pular para o conteúdo</a>
@@ -66,8 +68,7 @@
 
         <div class="nav-center">
           <a href="#home" class="brand-logo-link" aria-label="Studio One To One — página inicial">
-            <span class="brand-text desktop-logo">STUDIO ONE TO ONE</span>
-            <span class="brand-text mobile-logo">ONE TO ONE</span>
+            <img class="brand-logo" src="../assets/img/logos/one-to-one-petroleo.svg" alt="" width="140" height="47" />
           </a>
         </div>
 
@@ -220,6 +221,7 @@
 
       <section id="faq" class="faq" aria-labelledby="faq-title">
         <h2 id="faq-title">Perguntas frequentes</h2>
+        <img class="faq-logo" src="../assets/img/logos/one-to-one-petroleo.svg" alt="" width="140" height="47" loading="lazy" />
         <div class="faq-list">
           <details class="faq-item">
             <summary>Como agendo a aula experimental?</summary>
@@ -286,6 +288,21 @@
           >
         </p>
         <div class="map-wrapper">
+          <!-- O Google Maps (~1 MB) só carrega quando a pessoa pede: js/main.js troca este botão pelo iframe -->
+          <button
+            type="button"
+            class="map-facade"
+            data-map-src="https://www.google.com/maps?q=Av.+Armando+Lombardi,+949,+Barra+da+Tijuca,+Rio+de+Janeiro&amp;output=embed"
+            data-map-title="Localização One To One"
+          >
+            <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
+              <circle cx="12" cy="10" r="3"></circle>
+            </svg>
+            <span class="map-facade-label">Ver mapa</span>
+            <span class="map-facade-hint">Carrega o mapa do Google nesta página</span>
+          </button>
+          <noscript>
           <iframe
             title="Localização One To One"
             tabindex="-1"
@@ -296,6 +313,7 @@
             allowfullscreen=""
             loading="lazy"
           ></iframe>
+          </noscript>
         </div>
         <div class="location-actions">
           <a
@@ -330,7 +348,7 @@
     <footer class="site-footer-page">
       <div class="footer-inner">
         <div class="footer-brand">
-          <span class="footer-logo">STUDIO ONE TO ONE</span>
+          <img class="footer-logo" src="../assets/img/logos/one-to-one-petroleo.svg" alt="Studio One To One" width="140" height="47" loading="lazy" />
           <p>
             Atendimento individualizado e ambiente sofisticado, para evoluir
             com propósito.

@@ -3,6 +3,15 @@
 
 const PKZ_URL = "pages/pkz.html";
 const OTO_URL = "pages/one-to-one.html";
+// Logos (brancos) da tela "redirecionando...": a PKZ usa a versão empilhada, que fica melhor centralizada.
+// A chave também vai para #redir[data-marca], que o CSS usa para dimensionar cada logo pela sua proporção.
+const LOGOS = {
+  pkz: "assets/img/logos/pkz-lab-empilhado-branco.svg",
+  oto: "assets/img/logos/one-to-one-branco.svg",
+};
+Object.values(LOGOS).forEach((src) => {
+  new Image().src = src; // pré-carrega: o logo já está no cache quando o aviso abre
+});
 const EDGE = 10; // soltar com posição <= 10 (PKZ) ou >= 90 (One To One) redireciona
 const REDIRECT_MS = 1500; // tempo do aviso antes de abrir a página (dá tempo de cancelar)
 
@@ -17,7 +26,8 @@ const divLine = document.getElementById("div-line");
 const arrL = document.getElementById("arr-l");
 const arrR = document.getElementById("arr-r");
 const redir = document.getElementById("redir");
-const rName = document.getElementById("redir-name");
+const rText = document.getElementById("redir-text");
+const rLogo = document.getElementById("redir-logo");
 const redirCancel = document.getElementById("redir-cancel");
 const dragHint = document.getElementById("drag-hint");
 const hintPkzBox = document.getElementById("hint-pkz-box");
@@ -76,16 +86,18 @@ function apply(p) {
 
 // Só redireciona ao soltar (ou Enter/Espaço) perto de uma ponta
 function commit() {
-  if (pos <= EDGE) doRedirect("PKZ", "#07111e", PKZ_URL);
-  else if (pos >= 100 - EDGE) doRedirect("ONE TO ONE", "#014c6f", OTO_URL);
+  if (pos <= EDGE) doRedirect("PKZ Lab", "#07111e", PKZ_URL, "pkz");
+  else if (pos >= 100 - EDGE) doRedirect("Studio One To One", "#014c6f", OTO_URL, "oto");
 }
 
-function doRedirect(name, bg, url) {
+function doRedirect(name, bg, url, marca) {
   if (redirected) return;
   redirected = true;
   redir.style.background = bg;
   redir.style.color = "#ffffff";
-  rName.textContent = name;
+  redir.dataset.marca = marca;
+  rText.textContent = name;
+  rLogo.src = LOGOS[marca];
   redir.hidden = false;
   redir.classList.add("on");
   redirCancel.focus();
@@ -112,15 +124,15 @@ window.addEventListener("keydown", (e) => {
 });
 
 // Os botões "Quero conhecer" também mostram o aviso antes de abrir a página
-function ligarBotao(botao, name, bg, url) {
+function ligarBotao(botao, name, bg, url, marca) {
   botao.addEventListener("click", (e) => {
     if (e.ctrlKey || e.metaKey || e.shiftKey || e.button !== 0) return; // deixa abrir em nova aba
     e.preventDefault();
-    doRedirect(name, bg, url);
+    doRedirect(name, bg, url, marca);
   });
 }
-ligarBotao(btnPkzCta, "PKZ", "#07111e", PKZ_URL);
-ligarBotao(btnOtoCta, "ONE TO ONE", "#014c6f", OTO_URL);
+ligarBotao(btnPkzCta, "PKZ Lab", "#07111e", PKZ_URL, "pkz");
+ligarBotao(btnOtoCta, "Studio One To One", "#014c6f", OTO_URL, "oto");
 
 // A barra fica fixa no topo e os painéis abaixo da apresentação: ao mexer no halter,
 // leva a página até os painéis para o arrasto nunca acontecer "às cegas".

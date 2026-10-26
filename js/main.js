@@ -56,4 +56,47 @@ document.addEventListener("DOMContentLoaded", () => {
     topo.classList.toggle("show", window.scrollY > 300); // aparece depois de 300px de rolagem
   });
   topo.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+  // ---------- Mapa sob demanda ----------
+  // O iframe do Google Maps só é criado no clique: a página não baixa o mapa de quem não vai usá-lo.
+  document.querySelectorAll(".map-facade").forEach((botao) => {
+    botao.addEventListener("click", () => {
+      if (!botao.dataset.mapSrc) return; // sem endereço não há mapa para carregar
+      const mapa = document.createElement("iframe");
+      mapa.src = botao.dataset.mapSrc;
+      mapa.title = botao.dataset.mapTitle;
+      mapa.width = "100%";
+      mapa.height = "400";
+      mapa.allowFullscreen = true;
+      mapa.tabIndex = -1; // como no HTML original: o mapa fica fora da ordem do Tab
+      // O foco vai para a caixa, não para o mapa: o Google Maps é de outra origem e pode prender o Tab
+      const caixa = botao.parentElement;
+      caixa.tabIndex = -1;
+      caixa.setAttribute("role", "region"); // o leitor de tela anuncia "Mapa: Localização ..." em vez de um bloco sem nome
+      caixa.setAttribute("aria-label", `Mapa: ${botao.dataset.mapTitle}`);
+      botao.replaceWith(mapa);
+      caixa.focus(); // o botão sumiu: sem isso o foco cairia no <body>
+    });
+  });
+
+  // ---------- Seções aparecem ao rolar ----------
+  // Sem IntersectionObserver ou com "reduzir movimento" ligado, tudo fica visível desde o início.
+  const semAnimacao = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if (!semAnimacao && "IntersectionObserver" in window) {
+    const observador = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          if (!entrada.isIntersecting) return;
+          entrada.target.classList.add("is-visible");
+          observador.unobserve(entrada.target); // anima só uma vez
+        });
+      },
+      { rootMargin: "0px 0px -10% 0px" } // começa quando a seção passa 10% da borda de baixo
+    );
+    // a primeira seção (hero) já está na tela e fica de fora
+    document.querySelectorAll("main > section:not(:first-child)").forEach((secao) => {
+      secao.classList.add("reveal");
+      observador.observe(secao);
+    });
+  }
 });

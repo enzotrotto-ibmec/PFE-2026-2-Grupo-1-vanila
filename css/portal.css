@@ -673,13 +673,30 @@ body {
   pointer-events: all;
 }
 #redir h2 {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-style: italic;
-  font-size: clamp(2.5rem, 10vw, 4.5rem);
-  color: inherit;
-  margin-bottom: 10px;
-  text-align: center;
+  margin-bottom: 1.25rem;
+}
+/* Logo oficial da marca escolhida (o nome em texto fica em .visually-hidden para o leitor de tela) */
+/* O logo empilhado da PKZ é dimensionado pela altura e o largo da One To One pela largura,
+   para os dois aparecerem com peso visual parecido (js/portal.js põe #redir[data-marca]) */
+#redir-logo {
+  display: block;
+  height: clamp(9rem, 32vw, 15rem);
+  width: auto;
+  max-width: 80vw;
+}
+#redir[data-marca="oto"] #redir-logo {
+  width: min(80vw, 28rem);
+  height: auto;
+}
+/* Alto contraste do Windows: logos brancos ganham o fundo escuro do portal para não sumirem num tema claro */
+@media (forced-colors: active) {
+  .footer-logo img,
+  #redir-logo {
+    forced-color-adjust: none;
+    background-color: var(--bg-base);
+    padding: 0.25rem;
+    border-radius: 4px;
+  }
 }
 #redir small {
   font-family: var(--font-body);
@@ -748,18 +765,24 @@ body {
   max-width: clamp(420px, 28vw, 640px);
 }
 
+/* Os dois logos oficiais lado a lado; a altura acompanha o antigo tamanho do nome no rodapé */
 .footer-logo {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-style: italic;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5em 0.6em;
   font-size: var(--fs-footer-logo);
-  color: #ffffff;
-  letter-spacing: 0.02em;
-  margin-bottom: 0.4em;
+  margin-bottom: 0.6em;
+}
+.footer-logo img {
+  display: block;
+  height: 1.4em;
+  width: auto;
 }
 
 .footer-amp {
+  font-family: var(--font-display);
+  font-weight: 900;
   color: var(--accent-light);
 }
 

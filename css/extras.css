@@ -111,6 +111,9 @@ section.faq {
   max-width: 50rem;
   margin: 0 auto;
 }
+.faq-logo {
+  display: none; /* decorativo: só aparece no desktop, onde sobra espaço embaixo do título */
+}
 .faq-list {
   display: flex;
   flex-direction: column;
@@ -178,12 +181,24 @@ section.faq {
     padding-inline: 0;
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 2fr);
+    /* sem o 1fr, a altura extra das perguntas abertas se dividia entre as linhas e empurrava o logo para baixo */
+    grid-template-rows: auto 1fr;
     column-gap: var(--gap-col);
     align-items: start;
     text-align: left;
   }
   section.faq .faq-list {
     margin-top: 0;
+    grid-column: 2;
+    grid-row: 1 / span 2; /* as perguntas ocupam as duas linhas; título e logo empilham à esquerda */
+  }
+  .faq-logo {
+    display: block;
+    grid-column: 1;
+    grid-row: 2;
+    width: min(100%, 13rem);
+    height: auto;
+    margin-top: 2rem;
   }
 }
 

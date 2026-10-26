@@ -310,7 +310,8 @@
       aria-labelledby="redir-name"
       aria-describedby="redir-sub"
     >
-      <h2 id="redir-name">PKZ</h2>
+      <!-- js/portal.js põe o logo da marca escolhida; o nome em texto fica para o leitor de tela -->
+      <h2 id="redir-name"><img id="redir-logo" src="assets/img/logos/pkz-lab-empilhado-branco.svg" alt="" /><span id="redir-text" class="visually-hidden">PKZ Lab</span></h2>
       <small id="redir-sub">redirecionando...</small>
       <button type="button" id="redir-cancel">Cancelar</button>
     </div>
@@ -319,7 +320,11 @@
     <footer id="site-footer">
       <div class="footer-inner">
         <div class="footer-brand">
-          <span class="footer-logo">PKZ <span class="footer-amp">&amp;</span> ONE TO ONE</span>
+          <span class="footer-logo">
+            <img src="assets/img/logos/pkz-lab-horizontal-branco.svg" alt="PKZ Lab" width="849" height="255" loading="lazy" />
+            <span class="footer-amp" aria-hidden="true">&amp;</span><span class="visually-hidden"> e </span>
+            <img src="assets/img/logos/one-to-one-branco.svg" alt="Studio One To One" width="140" height="47" loading="lazy" />
+          </span>
           <p>
             Duas estruturas parceiras, um só padrão de treino, cuidado e
             performance.

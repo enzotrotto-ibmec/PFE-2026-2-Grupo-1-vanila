@@ -16,7 +16,6 @@
     Botão       --btn-padding --btn-border --btn-hover-bg --btn-hover-fg --radius-btn --radius-btn-modal
     Tipografia  --font-display --font-body --heading-weight --heading-tracking
                 --nav-weight --nav-size --nav-hover --nav-hover-decoration --nav-transition
-                --logo-size-mobile
     Sombra      --shadow-hero --shadow-nav --fab-shadow --fab-offset
     Overlay     --overlay (fundo escuro atrás do modal <dialog>)
 */
@@ -147,7 +146,7 @@ h3 {
   align-items: center;
 }
 
-/* o visual do logotipo (.brand-text) é da marca */
+/* Logotipo do topo: o SVG oficial da marca (assets/img/logos), sempre pela altura */
 .brand-logo-link {
   text-decoration: none;
   display: flex;
@@ -157,15 +156,14 @@ h3 {
   min-height: 2.75rem;
 }
 
-.desktop-logo {
-  display: none;
-}
-.mobile-logo {
+.brand-logo {
   display: block;
+  height: 2.25rem;
+  width: auto;
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
 }
-/* (0,2,0): vence o font-size do .brand-text da marca, que carrega depois */
-.brand-text.mobile-logo {
-  font-size: var(--logo-size-mobile);
+.brand-logo-link:hover .brand-logo {
+  transform: scale(1.04);
 }
 
 /* Celular: o menu fica escondido e aparece como um painel logo abaixo do cabeçalho.
@@ -465,6 +463,105 @@ h3 {
 }
 /* .map-wrapper (raio/borda/sombra) é da marca */
 
+/* Prévia do mapa: botão que ocupa o lugar do iframe até a pessoa pedir o mapa (js/main.js) */
+.map-facade {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  height: 400px; /* mesma altura do iframe: a página não pula quando o mapa entra */
+  padding: 1.5rem;
+  border: 0;
+  /* Textura de mapa em CSS (ruas em grade + uma avenida diagonal), na cor de destaque da marca.
+     O centro fica liso para o texto. Sem color-mix() a textura some e sobra o fundo liso. */
+  --map-street: color-mix(in srgb, var(--accent-ink) 14%, transparent);
+  --map-avenue: color-mix(in srgb, var(--accent-ink) 10%, transparent);
+  --map-texture:
+    radial-gradient(ellipse at center, var(--bg-surface) 0 22%, transparent 55%),
+    linear-gradient(118deg, transparent 49%, var(--map-avenue) 49% 51.5%, transparent 51.5%),
+    repeating-linear-gradient(0deg, var(--map-street) 0 1px, transparent 1px 3.5rem),
+    repeating-linear-gradient(90deg, var(--map-street) 0 1px, transparent 1px 4.5rem);
+  background-color: var(--bg-surface);
+  background-image: var(--map-texture);
+  color: var(--accent-ink);
+  font: inherit;
+  cursor: pointer;
+}
+.map-facade svg {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* Hover: um véu na cor da marca por cima da textura e o pin sobe um pouco, deixando claro que é clicável */
+.map-facade:hover {
+  background-image: linear-gradient(var(--hover-tint), var(--hover-tint)), var(--map-texture);
+}
+.map-facade:hover svg {
+  transform: translateY(-3px);
+}
+.map-facade-label {
+  font-size: var(--fs-lg);
+  font-weight: 700;
+  color: var(--text-primary);
+}
+.map-facade-hint {
+  font-size: var(--fs-sm);
+  color: var(--text-muted);
+}
+.map-facade:hover .map-facade-label {
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}
+.map-facade:focus-visible {
+  outline-offset: -6px; /* o .map-wrapper tem overflow: hidden e cortaria o anel de foco por fora */
+}
+.map-wrapper iframe {
+  display: block; /* tira o espaço de linha embaixo do iframe inline */
+  border: 0;
+}
+/* Depois do clique o foco fica na caixa do mapa: anel visível para quem usa teclado.
+   Seletor mais forte que o [tabindex="-1"]:focus { outline: none } de extras.css, que carrega depois. */
+/* Alto contraste do Windows: o fundo vira a cor do sistema, mas o SVG do logo não é recolorido
+   (um logo branco sumiria num tema claro). O fundo da própria marca fica atrás do logo. */
+@media (forced-colors: active) {
+  .brand-logo,
+  .footer-logo,
+  .faq-logo {
+    forced-color-adjust: none;
+    background-color: var(--bg-base);
+    padding: 0.25rem;
+    border-radius: 4px;
+  }
+}
+.location-section .map-wrapper:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: -3px; /* por dentro: a caixa tem overflow: hidden */
+}
+
+/* Seções que aparecem ao rolar: js/main.js só põe .reveal se houver IntersectionObserver
+   e "reduzir movimento" estiver desligado, então sem JS o conteúdo nunca fica escondido */
+.reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  /* ease-out exponencial: a seção chega rápido e assenta devagar */
+  transition:
+    opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media print {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+  .map-facade {
+    display: none; /* "Ver mapa" não faz sentido no papel; o endereço e o "Como chegar" continuam */
+  }
+}
+
 /* ============================================================
    Modal <dialog> (showModal): ESC, foco preso e ::backdrop são do navegador
    Marcação:  <dialog class="modal-dialog" aria-labelledby="..."><div class="modal-box">...</div></dialog>
@@ -733,8 +830,15 @@ textarea.modal-input {
 }
 
 /* ============================================================
-   Rodapé (o logotipo .footer-logo é da marca)
+   Rodapé
    ============================================================ */
+/* Logotipo do rodapé: o SVG oficial da marca, pela altura */
+.footer-logo {
+  display: block;
+  height: 2.5rem;
+  width: auto;
+  margin-bottom: 0.75rem;
+}
 .site-footer-page {
   background-color: var(--bg-surface);
   border-top: 1px solid var(--border);
@@ -887,12 +991,6 @@ textarea.modal-input {
   .back-text {
     display: inline;
   }
-  .desktop-logo {
-    display: inline;
-  }
-  .mobile-logo {
-    display: none;
-  }
   .menu-toggle {
     display: none;
   }
@@ -962,7 +1060,6 @@ textarea.modal-input {
     --fs-xl: 1.25rem;
     --fs-h2: 1.953rem;
     --fs-hero: 3.052rem;
-    --fs-logo: 1.5625rem;
   }
 
   /* Todas as faixas de conteúdo usam a mesma largura (e as mesmas bordas) que a navbar */
@@ -1003,11 +1100,11 @@ textarea.modal-input {
   .cross-brand-nav-link {
     font-size: var(--fs-base);
   }
-  .brand-text {
-    white-space: nowrap;
+  .brand-logo {
+    height: 2.75rem;
   }
   .footer-logo {
-    font-size: 1.25rem;
+    height: 3rem;
   }
   .services-subtitle {
     max-width: 62ch;
@@ -1103,7 +1200,8 @@ textarea.modal-input {
     grid-row: 1 / span 4;
     margin-bottom: 1.5rem;
   }
-  .location-section .map-wrapper iframe {
+  .location-section .map-wrapper iframe,
+  .location-section .map-facade {
     height: clamp(20rem, 30vw, 28rem);
   }
   .location-section .location-actions {

@@ -72,7 +72,6 @@
   --nav-hover: var(--text-primary);
   --nav-hover-decoration: none;
   --nav-transition: color 0.2s ease;
-  --logo-size-mobile: clamp(1.4rem, 7vw, 1.75rem); /* logotipo curto no header mobile */
 
   /* ---------- Sombras ---------- */
   --shadow-hero: 0 16px 36px rgba(0, 0, 0, 0.4); /* foto do hero */
@@ -82,24 +81,6 @@
 
   /* ---------- Overlays ---------- */
   --overlay: rgba(2, 11, 24, 0.85); /* ::backdrop do modal <dialog> */
-}
-
-/* ---------- Logotipo (tipográfico, gradiente) ---------- */
-.brand-text {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-style: italic;
-  font-size: clamp(1.75rem, 4vw, 2.25rem);
-  background: linear-gradient(135deg, #ffffff 40%, var(--accent-ink) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  letter-spacing: -0.5px;
-  text-transform: uppercase;
-  filter: drop-shadow(0 2px 8px rgba(0, 45, 107, 0.5));
-  transition: transform 0.25s ease;
-}
-.brand-logo-link:hover .brand-text {
-  transform: scale(1.04);
 }
 
 /* ---------- Hero ---------- */
@@ -291,21 +272,6 @@ select.modal-input option {
   color: #fff;
 }
 
-/* ---------- Rodapé: logotipo ---------- */
-.footer-logo {
-  display: block;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-style: italic;
-  font-size: 1.3rem;
-  letter-spacing: -0.3px;
-  text-transform: uppercase;
-  background: linear-gradient(135deg, #ffffff 40%, var(--accent-ink) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  margin-bottom: 0.5rem;
-}
-
 /* ---------- Responsivo (marca), mobile first: o CSS acima é o celular ---------- */
 @media (min-width: 40.0625em) {
   .hero-content h1 {
@@ -332,9 +298,6 @@ select.modal-input option {
 
 /* ---------- Desktop largo (>= 1101px): hierarquia e composição ---------- */
 @media (min-width: 68.8125em) {
-  .brand-text {
-    font-size: var(--fs-logo);
-  }
   .hero-content h2 {
     font-size: var(--fs-lg);
   }
