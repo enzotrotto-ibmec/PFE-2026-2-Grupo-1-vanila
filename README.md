@@ -110,7 +110,7 @@ Por ser um projeto Vanilla, não há etapa de build nem dependências a instalar
 
 O site é publicado via GitHub Pages.
 
-* Link do site publicado: (adicionar aqui após a publicação)
+* Link do site publicado: https://enzotrotto-ibmec.github.io/PFE-2026-2-Grupo-1-vanila/
 
 ## Observações técnicas
 
