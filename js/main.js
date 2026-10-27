@@ -79,6 +79,32 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // ---------- Seção atual no menu ----------
+  // O link da seção que cruza o meio da tela recebe aria-current e ganha o sublinhado (base.css).
+  // Só entram links "#id" que apontam para uma seção do <main>: o "Contato" abre o <dialog> e fica de fora.
+  const linksDeSecao = new Map();
+  menu.querySelectorAll('a.nav-link[href^="#"]').forEach((link) => {
+    const secao = document.getElementById(link.getAttribute("href").slice(1));
+    if (secao && secao.matches("main > section")) linksDeSecao.set(secao, link);
+  });
+  if (linksDeSecao.size && "IntersectionObserver" in window) {
+    const marcarAtual = (secao) => {
+      linksDeSecao.forEach((link, alvo) => {
+        if (alvo === secao) link.setAttribute("aria-current", "location");
+        else link.removeAttribute("aria-current");
+      });
+    };
+    const espiao = new IntersectionObserver(
+      (entradas) => {
+        entradas.forEach((entrada) => {
+          if (entrada.isIntersecting) marcarAtual(entrada.target); // seção sem link no menu limpa o destaque
+        });
+      },
+      { rootMargin: "-50% 0px -50% 0px" } // uma linha no meio da tela: só uma seção a cruza por vez
+    );
+    document.querySelectorAll("main > section").forEach((secao) => espiao.observe(secao));
+  }
+
   // ---------- Seções aparecem ao rolar ----------
   // Sem IntersectionObserver ou com "reduzir movimento" ligado, tudo fica visível desde o início.
   const semAnimacao = window.matchMedia("(prefers-reduced-motion: reduce)").matches;

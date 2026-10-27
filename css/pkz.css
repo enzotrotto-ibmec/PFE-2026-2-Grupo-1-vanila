@@ -96,7 +96,7 @@
   background-clip: text;
   -webkit-text-fill-color: transparent;
 }
-.hero-content h2 {
+.hero-content p {
   font-size: 1.15rem;
   font-weight: 600;
   font-style: italic;
@@ -278,7 +278,7 @@ select.modal-input option {
     font-size: var(--fs-hero);
     margin-bottom: 1.25rem;
   }
-  .hero-content h2 {
+  .hero-content p {
     font-size: clamp(1.2rem, 3vw, 1.7rem);
   }
   .sport-grid {
@@ -298,7 +298,7 @@ select.modal-input option {
 
 /* ---------- Desktop largo (>= 1101px): hierarquia e composição ---------- */
 @media (min-width: 68.8125em) {
-  .hero-content h2 {
+  .hero-content p {
     font-size: var(--fs-lg);
   }
   .family-trust-section {

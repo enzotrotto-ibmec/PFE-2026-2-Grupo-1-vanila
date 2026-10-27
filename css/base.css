@@ -229,6 +229,20 @@ h3 {
   color: var(--nav-hover);
   text-decoration: var(--nav-hover-decoration);
 }
+/* Seção que está no meio da tela (o main.js marca com aria-current).
+   Fica depois do :hover para o destaque não sumir com o mouse em cima. */
+.nav-link[aria-current="location"] {
+  color: var(--accent-ink);
+  text-decoration: underline 2px var(--accent-ink);
+  text-underline-offset: 0.35em;
+  animation: nav-atual 0.3s ease; /* o "reduzir movimento" no fim do arquivo desliga */
+}
+@keyframes nav-atual {
+  from {
+    text-decoration-color: transparent;
+    text-underline-offset: 0.75em; /* o sublinhado sobe até o texto enquanto aparece */
+  }
+}
 
 .cross-brand-nav-link {
   color: var(--text-subtle);
@@ -446,6 +460,9 @@ h3 {
 .location-section {
   max-width: 50rem;
   margin: 0 auto;
+}
+.location-address {
+  margin-bottom: 0.75rem;
 }
 .location-address-header {
   display: flex;
@@ -1088,7 +1105,7 @@ textarea.modal-input {
     padding-inline: 0;
   }
 
-  /* h2 de seção: um só tamanho (o h2 de .hero-content é subtítulo e fica fora) */
+  /* h2 de seção: um só tamanho (o hero fica fora) */
   section:not(.hero-section) h2 {
     font-size: var(--fs-h2);
     line-height: 1.2;
@@ -1131,7 +1148,7 @@ textarea.modal-input {
     align-items: end;
   }
   #aula-hero .hero-content h1,
-  #aula-hero .hero-content :is(p, h2) {
+  #aula-hero .hero-content p {
     margin-bottom: 0;
   }
 
